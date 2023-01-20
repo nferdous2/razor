@@ -26,7 +26,6 @@ export const presets = {
         ...BOLD,
     
         fontSize:28
-    
     },
     // used for catagory text 
     catagory: {
@@ -34,12 +33,11 @@ export const presets = {
         fontSize: 24
     },
     // used for service name / notifcation title /
-      title: {
+    title: {
         ...BOLD,
         fontSize: 20
     },
     h5:{
-
         ...BASE_BOLD,
     
         fontSize:18

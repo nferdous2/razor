@@ -1,45 +1,48 @@
 import React from "react";
-import { View, StyleSheet, Pressable } from "react-native";
+import { View, StyleSheet, Pressable, StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import { spacing } from "../../theme/spacing";
-import { colors } from "../../theme/colors";
-import Text from "../text/text";
+import Text from "../Text/Text";
 
 export default function ProfileHeader({ backBtn, title }) {
+  
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
+   
+   <View style={styles.container}>
+   
       {backBtn && (
+   
         <Pressable
-          style={{ marginRight: 15 }}
+   
+          style={{ padding:spacing[5]}}
+   
           onPress={() => {
+   
             navigation.goBack();
+   
           }}
+   
         >
           <AntDesign name="arrowleft" size={24} color="black" />
+          <Text preset="title" style={{marginTop:-26,marginLeft:spacing[10] }}>{title}</Text>
+
         </Pressable>
       )}
-      <Text preset="title">{title}</Text>
     </View>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    
     marginBottom: spacing[7],
-    
-    marginTop: spacing[7],
-    
     flexDirection: "row",
     
     display: "flex",
     
     alignItems: "center",
-    
-    padding:spacing[2],
-    
+    padding:spacing[1],  
     borderBottomColor: "orange",
     borderBottomWidth: 1,  },
 });

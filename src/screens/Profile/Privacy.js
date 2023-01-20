@@ -2,15 +2,28 @@ import React from "react";
 import { View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ProfileHeader from "../components/ProfileCommonComponent/ProfileHeader";
-import Text from "../components/text/text";
-import { spacing } from "../theme/spacing";
+import Text from "../../components/Text/Text";
+import ProfileHeader from "../../components/ProfileCommonComponent/ProfileHeader";
+import { spacing } from "../../theme/spacing";
+import { StatusBar } from "expo-status-bar";
+
+import * as Localization from "expo-localization";
+import i18n from "i18n-js";
+import {
+  en,
+  sp,
+  bn,
+} from "../../components/ProfileCommonComponent/localizations";
 
 export default function Privacy({ backBtn, title }) {
+  // Language change
+  i18n.fallbacks = true;
+  i18n.translations = { en, sp, bn };
+
   return (
     <SafeAreaView>
       <ScrollView style={{ padding: spacing[2] }}>
-        <ProfileHeader backBtn={true} title="Privacy Policy" />
+        <ProfileHeader backBtn={true} title={i18n.t("Privacy Policy")}  />
 
         <View
           style={{
@@ -25,7 +38,7 @@ export default function Privacy({ backBtn, title }) {
               marginBottom: spacing[5],
             }}
           >
-            1.Types of Data We Collect
+            .{i18n.t("Types of Data We Collect")}
           </Text>
           <Text>
             Est gubergren sadipscing sit aliquyam amet, erat sit et dolor dolor
@@ -50,7 +63,7 @@ export default function Privacy({ backBtn, title }) {
               marginBottom: spacing[5],
             }}
           >
-            2.Use of Your Personal Data
+            .{i18n.t("Use of Your Personal Data")}
           </Text>
           <Text>
             Est gubergren sadipscing sit aliquyam amet, erat sit et dolor dolor
@@ -75,7 +88,7 @@ export default function Privacy({ backBtn, title }) {
               marginBottom: spacing[5],
             }}
           >
-            3.Disclouser of your Personal Data
+            .{i18n.t("Disclouser of your Personal Data")}
           </Text>
           <Text>
             Est gubergren sadipscing sit aliquyam amet, erat sit et dolor dolor
@@ -87,6 +100,8 @@ export default function Privacy({ backBtn, title }) {
           </Text>
         </View>
       </ScrollView>
+      <StatusBar style="auto" />
+
     </SafeAreaView>
   );
 }

@@ -1,22 +1,18 @@
 import React, { useState } from "react";
-import { View, Switch, StyleSheet } from "react-native";
+import { View, Switch, StyleSheet, Pressable, Vibration } from "react-native";
 import { colors } from "../../theme/colors";
 import { spacing } from "../../theme/spacing";
-import Text from "../text/text";
+import Text from "../Text/Text";
 
-
-export default function SwitchInput({ text }) {
-  const [isEnabled, setIsEnabled] = useState(false);
+export default function SwitchInput({ text ,onPress}) {
+  const [isEnabled, setIsEnabled] = useState();
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   return (
-    
-    <View style={styles.switchField}>
-    
+    <Pressable onPress={onPress} style={styles.liststyle}>
+
+       <View style={styles.switchField}>
       <Text preset="h6">{text}</Text>
-
-
-    
       <Switch
     
         trackColor={{ false: "#C2BEBD", true: "#FCB615" }}
@@ -28,10 +24,10 @@ export default function SwitchInput({ text }) {
         onValueChange={toggleSwitch}
     
         value={isEnabled}
-    
       />
-    
-    </View>
+        
+  </View>
+  </Pressable>
   );
 }
 const styles = StyleSheet.create({
