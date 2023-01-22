@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import {
@@ -14,18 +14,20 @@ import Text from "../../components/Text/Text";
 import Button from "../../components/Button";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ProfileHeader from "../../components/ProfileCommonComponent/ProfileHeader";
+import themeContext from "../../config/themeContext";
 
 export default function Language() {
   let [locale, setLocale] = useState(Localization.locale);
   i18n.fallbacks = true;
   i18n.translations = { en, sp, bn };
   i18n.locale = locale;
-
+  //mode
+  const theme = useContext(themeContext);
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ backgroundColor: theme.background,flex:1 }}>
       <ProfileHeader backBtn={true} title={i18n.t("header")} />
       <View style={{ padding: spacing[3] }}>
-        <Text style={styles.texts}>{i18n.t("language")}</Text>
+        <Text style={[styles.texts,{color:theme.color}]}>{i18n.t("language")}</Text>
         <View style={styles.btn}>
           <Button title="     Bangla       " onPress={() => setLocale("bn")} />
         </View>

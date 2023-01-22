@@ -1,6 +1,6 @@
-import { View, Image, StyleSheet, ScrollView } from "react-native";
+import { View, Image, StyleSheet, ScrollView, Switch } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import React, { useReducer } from "react";
+import React, { useContext, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { spacing } from "../../theme/spacing";
 import Lists from "../../components/ProfileCommonComponent/Lists";
@@ -22,6 +22,8 @@ import {
   FontAwesome,
 } from "@expo/vector-icons";
 import Button from "../../components/Button";
+import { EventRegister } from "react-native-event-listeners";
+import themeContext from "../../config/themeContext";
 
 export default function Profile({ navigation }) {
   //navigate to edit page
@@ -42,47 +44,48 @@ export default function Profile({ navigation }) {
   };
 
   //icons
-  function Icon({ fontFamily, name, colors }) {
+  function Icon({ fontFamily, name, iconcolors }) {
     if (fontFamily === "AntDesign") {
-      return <AntDesign name={name} size={24} color={colors} />;
+      return <AntDesign name={name} size={24} color={theme.iconcolors} />;
     } else if (fontFamily === "MaterialCommunityIcons") {
-      return <MaterialCommunityIcons name={name} size={24} color={colors} />;
+      return (
+        <MaterialCommunityIcons
+          name={name}
+          size={24}
+          color={theme.iconcolors}
+        />
+      );
     } else if (fontFamily === "Ionicons") {
       return (
         <Ionicons
           name={name}
           size={24}
-          color={colors}
+          color={theme.iconcolors}
           style={{ display: "flex" }}
         />
       );
     } else if (fontFamily === "MaterialIcons") {
-      return <MaterialIcons name={name} size={24} color={colors} />;
+      return <MaterialIcons name={name} size={24} color={theme.iconcolors} />;
     } else if (fontFamily === "FontAwsome") {
-      return <FontAwesome name={name} size={24} color={colors} />;
+      return <FontAwesome name={name} size={24} color={theme.iconcolors} />;
     }
   }
-
   // Language change
   i18n.fallbacks = true;
   i18n.translations = { en, sp, bn };
-///auth
+  ///auth
 
-    // const { user,logOut } = useAuth();
+  // const { user,logOut } = useAuth();
+  const [mode, setMode] = useState(false);
+
+  ///colors
+  const theme = useContext(themeContext);
 
   return (
-    <SafeAreaView>
-      <ScrollView style={{ padding: spacing[3] }}>
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
-        >
-          <Text style={{ fontSize: 24 }}>{i18n.t("Profile")} </Text>
-        </View>
-
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: theme.background }]}
+    >
+      <ScrollView>
         {/* header section done */}
         <View style={styles.profilesection}>
           <View>
@@ -100,7 +103,10 @@ export default function Profile({ navigation }) {
               }}
             />
           </View>
-          <Text preset="h2" style={{ marginBottom: spacing[4] }}>
+          <Text
+            preset="h2"
+            style={{ marginBottom: spacing[4], color: theme.color }}
+          >
             User name
             {/* {user.name} */}
           </Text>
@@ -113,7 +119,7 @@ export default function Profile({ navigation }) {
           <Icon
             fontFamily={"MaterialCommunityIcons"}
             name="account"
-            color={colors}
+            color={theme.colors}
           />
           <Lists title={i18n.t("EditProfile")} onPress={() => onPressEdit()} />
         </View>
@@ -125,7 +131,10 @@ export default function Profile({ navigation }) {
             name="account"
             color={colors}
           />
-          <Lists title={i18n.t("Appointment")} onPress={() => onPressAppointment()} />
+          <Lists
+            title={i18n.t("Appointment")}
+            onPress={() => onPressAppointment()}
+          />
         </View>
         {/* language */}
         <View style={styles.field}>
@@ -142,8 +151,38 @@ export default function Profile({ navigation }) {
           />
           <Lists title={i18n.t("Privacy")} onPress={() => onPressPrivacy()} />
         </View>
+
+        {/* Mode changes */}
+
+        <View>
+          <Text
+            style={{
+              fontSize: 20,
+              color: theme.color,
+              borderBottomWidth: 1.25,
+              borderBottomColor: colors.orange,
+              marginBottom: spacing[4],
+            }}
+          >
+            Preferences
+          </Text>
+          <View style={styles.darkmodestyle}>
+            <Text style={{ color: theme.color,fontSize:18 }}>
+              Dark Theme
+            </Text>
+            <Switch
+              value={mode}
+              onValueChange={(value) => {
+                setMode(value);
+                EventRegister.emit("changeTheme", value);
+              }}
+            ></Switch>
+          </View>
+          {/* <Text style={{ fontSize: 15, color: theme.color,
+             }}>Dark Mode</Text> */}
+        </View>
       </ScrollView>
-      <StatusBar style="auto" />
+      <StatusBar />
 
       {/* logout button */}
       {/* <Button title="Signout" onClick={logOut} /> */}
@@ -152,6 +191,24 @@ export default function Profile({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    padding: spacing[3],
+    flex: 1,
+  },
+  darkmodestyle: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: "-3%",
+    marginLeft: spacing[5],
+  },
+  preference: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+  },
   profilesection: {
     padding: spacing[2],
 
@@ -164,6 +221,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
 
     marginBottom: spacing[6],
+    backgroundColor: colors.background,
   },
   field: {
     marginBottom: spacing[4],

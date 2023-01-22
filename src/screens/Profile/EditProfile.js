@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {
   SafeAreaView,
   ScrollView,
@@ -17,15 +17,22 @@ import {
 } from "../../components/ProfileCommonComponent/localizations";
 
 import { StatusBar } from "expo-status-bar";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import Button from "../../components/Button";
+import themeContext from "../../config/themeContext";
 
 export default function EditProfile({ title, backBtn }) {
   i18n.fallbacks = true;
   i18n.translations = { en, sp, bn };
 
+
+    const [name, setName] = useState("");
+    const [number, setNumber] = useState("");
+     const [email, setEmail] = useState("");
+
   //update
+
   const { handleSubmit, control, reset } = useForm();
 
    const onSubmit = (data) => {
@@ -39,66 +46,39 @@ export default function EditProfile({ title, backBtn }) {
      });
    };
 
-
+//mode 
+const theme = useContext(themeContext)
    
   return (
-    <SafeAreaView>
-      <ScrollView style={{ padding: spacing[2] }}>
+    <SafeAreaView style={[styles.container,{ backgroundColor: theme.background }]} >
+
+      <ScrollView>
         <ProfileHeader backBtn={true} title={i18n.t("EditProfile")} />
 
         <View>
           <View style={styles.detailsView}>
-            <Controller
-              control={control}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                  style={styles.textSection}
-                  onBlur={onBlur}
-                  placeholder="Enter Your Name"
-                  onChangeText={(value) => onChange(value)}
-                  value={value}
-                />
-              )}
-              name="name"
-              rules={{ required: true }}
+            <TextInput
+              style={[styles.textSection, { color: theme.color }]}
+              placeholder="Name"
+              onChangeText={(text) => setName(text)}
+              multiline={true}
+              placeholderTextColor={theme.color}
+            />
+
+            <TextInput
+              style={[styles.textSection, { color: theme.color }]}
+              placeholder="Email"
+              onChangeText={(text) => setEmail(text)}
+              placeholderTextColor={theme.color}
+            />
+            <TextInput
+              style={[styles.textSection, { color: theme.color }]}
+              placeholder="Number"
+              onChangeText={(text) => setNumber(text)}
+              keyboardType="numeric"
+              placeholderTextColor={theme.color}
             />
           </View>
-
-          <View style={styles.detailsView}>
-            <Controller
-              control={control}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                  style={styles.textSection}
-                  onBlur={onBlur}
-                  placeholder="Enter Your Email"
-                  onChangeText={(value) => onChange(value)}
-                  value={value}
-                />
-              )}
-              name="email"
-              rules={{ required: true }}
-            />
-          </View>
-
-          <View style={styles.detailsView}>
-            <Controller
-              control={control}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                  style={styles.textSection}
-                  onBlur={onBlur}
-                  keyboardType="numeric"
-                  placeholder="Enter Your Number"
-                  onChangeText={(value) => onChange(value)}
-                  value={value}
-                />
-              )}
-              name="number"
-              rules={{ required: true }}
-            />
-          </View>
-
           <View style={styles.button}>
             <Button
               style={styles.buttonInner}
@@ -139,5 +119,8 @@ const styles = StyleSheet.create({
 
     borderBottomWidth: 0.5,
   },
- 
+  container: {
+    padding: spacing[3],
+    flex:1
+  }
 });
