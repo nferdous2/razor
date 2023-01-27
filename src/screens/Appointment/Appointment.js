@@ -24,7 +24,7 @@ import {
 } from "../../components/ProfileCommonComponent/localizations";
 
 
-export default function Appointment() {
+export default function Appointment({navigation}) {
   const {
     control,
     handleSubmit,
@@ -54,6 +54,10 @@ export default function Appointment() {
   i18n.fallbacks = true;
   i18n.translations = { en, sp, bn };
 
+  //navigation
+  const onPressPayment = () => {
+    navigation.navigate("Payment");
+  };
   return (
     <ScrollView style={styles.detailsView}>
       <ProfileHeader backBtn={true} title={i18n.t("Appointment")} />
@@ -95,25 +99,15 @@ export default function Appointment() {
           rules={{ required: true }}
         />
       </View>
-
       {/* Dates */}
-
       <View style={{ marginTop: spacing[3] }}>
-        <CalendarPicker onDateChange={(date) => setSelectedStartDate(date)}/>
+        <CalendarPicker onDateChange={(date) => setSelectedStartDate(date)} />
         <TextInput style={styles.textSection}>date={startDate}</TextInput>
       </View>
-
       {/* Time */}
-      {/* <View style={{ marginTop: spacing[3] }}>
-<Controller
-control={control}
-render={({ field }) => <TimePick {...field}/>}
-name="time"
-rules={{ required: true }}
-/>
-</View> */}
 
-      <Button onPress={handleSubmit(onSubmit)} title="Continue" />
+      <Button title="Continue" onPress={() => onPressPayment()} />
+      {/* <Button onPress={handleSubmit(onSubmit)} title="Continue" /> */}
     </ScrollView>
   );
 }

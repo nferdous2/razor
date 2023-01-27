@@ -136,6 +136,7 @@ export default function Profile({ navigation }) {
             onPress={() => onPressAppointment()}
           />
         </View>
+
         {/* language */}
         <View style={styles.field}>
           <Icon fontFamily={"FontAwsome"} name="language" color={colors} />
@@ -167,9 +168,7 @@ export default function Profile({ navigation }) {
             Preferences
           </Text>
           <View style={styles.darkmodestyle}>
-            <Text style={{ color: theme.color,fontSize:18 }}>
-              Dark Theme
-            </Text>
+            <Text style={{ color: theme.color, fontSize: 18 }}>Dark Theme</Text>
             <Switch
               value={mode}
               onValueChange={(value) => {

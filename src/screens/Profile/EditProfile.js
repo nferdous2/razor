@@ -50,8 +50,9 @@ export default function EditProfile({ title, backBtn }) {
 const theme = useContext(themeContext)
    
   return (
-    <SafeAreaView style={[styles.container,{ backgroundColor: theme.background }]} >
-
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: theme.background }]}
+    >
       <ScrollView>
         <ProfileHeader backBtn={true} title={i18n.t("EditProfile")} />
 
@@ -62,21 +63,21 @@ const theme = useContext(themeContext)
               placeholder="Name"
               onChangeText={(text) => setName(text)}
               multiline={true}
-              placeholderTextColor={theme.color}
+              placeholderTextColor={theme.placeHolderTextColor}
             />
 
             <TextInput
               style={[styles.textSection, { color: theme.color }]}
               placeholder="Email"
               onChangeText={(text) => setEmail(text)}
-              placeholderTextColor={theme.color}
+              placeholderTextColor={theme.placeHolderTextColor}
             />
             <TextInput
               style={[styles.textSection, { color: theme.color }]}
               placeholder="Number"
               onChangeText={(text) => setNumber(text)}
               keyboardType="numeric"
-              placeholderTextColor={theme.color}
+              placeholderTextColor={theme.placeHolderTextColor}
             />
           </View>
           <View style={styles.button}>

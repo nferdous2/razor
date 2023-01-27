@@ -11,6 +11,8 @@ import { EventRegister } from "react-native-event-listeners";
 import { useEffect, useState } from "react";
 import themeContext from "./src/config/themeContext";
 import theme from './src/config/theme'
+import PaymentOption from "./src/screens/Appointment/PaymentOption";
+import Confirm from "./src/screens/Appointment/Confirm";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,16 +33,19 @@ useEffect(()=>{
 
   return (
     <themeContext.Provider value={mode === true ? theme.dark : theme.light}>
-        <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Profile" component={Profile} />
-            <Stack.Screen name="Edit" component={EditProfile} />
-            <Stack.Screen name="Privacy" component={Privacy} />
-            <Stack.Screen name="Language" component={Language} />
-            <Stack.Screen name="Appointment" component={Appointment} />
-            <Stack.Screen name="Notification" component={Notification} />
-          </Stack.Navigator>
-        </NavigationContainer>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="Edit" component={EditProfile} />
+          <Stack.Screen name="Privacy" component={Privacy} />
+          <Stack.Screen name="Language" component={Language} />
+          <Stack.Screen name="Appointment" component={Appointment} />
+          <Stack.Screen name="Payment" component={PaymentOption} />
+          <Stack.Screen name="appointmentConfirm" component={Confirm} />
+
+          <Stack.Screen name="Notification" component={Notification} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </themeContext.Provider>
   );
 }
