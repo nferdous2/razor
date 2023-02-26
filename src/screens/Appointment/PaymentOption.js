@@ -5,12 +5,12 @@ import {
   Text,
   Image,
   StyleSheet,
+  Pressable,
 } from "react-native";
 import React from "react";
 import ProfileHeader from "../../components/ProfileCommonComponent/ProfileHeader";
 import { spacing } from "../../theme/spacing";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Button from "../../components/Button";
 
 export default function PaymentOption({ navigation }) {
   const onPressConfirm = () => {
@@ -47,7 +47,8 @@ export default function PaymentOption({ navigation }) {
           }}
         ></Image>
       </View>
-      <View style={styles.liststyle}>
+      <Pressable  onPress={() => onPressConfirm()}
+       style={styles.liststyle}>
         <Text style={{ fontSize: 20 }}>bKash</Text>
         <Image
           source={{
@@ -59,8 +60,7 @@ export default function PaymentOption({ navigation }) {
             borderRadius: 5,
           }}
         ></Image>
-      </View>
-      <Button title="Continue" onPress={() => onPressConfirm()} />
+      </Pressable>
     </SafeAreaView>
   );
 }

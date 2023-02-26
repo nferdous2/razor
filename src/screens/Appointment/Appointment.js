@@ -14,7 +14,6 @@ import { useState } from "react";
 import Button from "../../components/Button";
 import CalendarPicker from "react-native-calendar-picker";
 import Text from "../../components/Text/Text";
-import TimePick from "../../components/TimePick";
 
 import i18n from "i18n-js";
 import {

@@ -4,10 +4,8 @@ import Text from "./Text/Text";
 import { colors } from "../theme/colors";
 
 export default function Button({ title, onPress, customStyles }) {
-
   return (
-   
-  
+
   <View>
       <TouchableOpacity style={[styles.button, customStyles]} onPress={onPress}>
    
