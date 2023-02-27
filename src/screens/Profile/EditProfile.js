@@ -50,12 +50,9 @@ export default function EditProfile({ title, backBtn }) {
 const theme = useContext(themeContext)
    
   return (
-    <SafeAreaView
-      style={[styles.container, { backgroundColor: theme.background }]}
-    >
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
       <ScrollView>
         <ProfileHeader backBtn={true} title={i18n.t("EditProfile")} />
-
         <View>
           <View style={styles.detailsView}>
             <TextInput

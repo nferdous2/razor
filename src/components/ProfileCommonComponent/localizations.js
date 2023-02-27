@@ -9,20 +9,18 @@ const en = {
   Male: "Male",
   Female: "Female",
   Others: "Others",
-
   Appointment: "Appointment",
   "Enter Your Name": "Enter Your Name",
   "Enter Your Email": "Enter Your Email",
   Update: "Update",
   "Privacy Policy": "Privacy Policy",
-  "Types of Data We Collect": "Types of Data We Collect",
-  "Disclouser of your Personal Data": "Disclouser of your Personal Data",
-  "Use of Your Personal Data": " Use of Your Personal Data",
   Sound: "Sound",
   Vibrate: "Vibrate",
   "Special Offers": "Special Offers",
   "Promo & Discount": "Promo & Discount",
   "New Service Available": "New Service Available",
+  "Personal Information We Collect": "La información personal que recopilamos",
+  "Our salon app Razor Cut is owned and operated by us. We are committed to protecting the privacy of our users .This Privacy Policy outlines how we collect, use, and protect your personal information when you use the App.":"Our salon app Razor Cut is owned and operated by us. We are committed to protecting the privacy of our users This Privacy Policy outlines how we collect, use, and protect your personal information when you use the App."
 };
 
 const sp = {
@@ -41,14 +39,13 @@ const sp = {
     "Enter Your Email": "escribe tu correo electronico",
     Update:"Actualizar",
     "Privacy Policy":"Política de privacidad",
-    "Types of Data We Collect":"Tipos de datos que recopilamos",
-    "Disclouser of your Personal Data":"Divulgador de sus Datos Personales",
-    "Use of Your Personal Data":"Uso de sus datos personales",
     Sound:"Sonido",
     Vibrate: "Vibrar",
     "Special Offers":"Oferta especial",
     "Promo & Discount": "Promoción y descuento",
     "New Service Available":"Nuevo servicio disponible",
+    "Personal Information We Collect": "আমরা কীভাবে ব্যক্তিগত তথ্য সংগ্রহ করি",
+    "Our salon app Razor Cut is owned and operated by us. We are committed to protecting the privacy of our users This Privacy Policy outlines how we collect, use, and protect your personal information when you use the App.":"Nuestra aplicación de salón, Razor Cut, es propiedad y está operada por nosotros. Estamos comprometidos a proteger la privacidad de nuestros usuarios. Esta Política de Privacidad describe cómo recopilamos, utilizamos y protegemos su información personal cuando utiliza la aplicación."
 
 
 };
@@ -69,13 +66,12 @@ const bn = {
   "Enter Your Email": "আপনার ইমেইল লিখুন",
   Update: "আপ টু ডেট",
   "Privacy Policy": "গোপনীয়তা নীতি",
-  "Types of Data We Collect": "আমরা যে ধরনের ডাটা সংগ্রহ করি",
-  "Disclouser of your Personal Data": " আপনার ব্যক্তিগত তথ্য প্রকাশক",
-  "Use of Your Personal Data": " আপনার ব্যক্তিগত ডেটার ব্যবহার",
   Sound: "শব্দ",
   Vibrate: "কম্পন",
   "Special Offers": "স্পেশাল অফার",
   "Promo & Discount": "প্রচার এবং ডিসকাউন্ট",
   "New Service Available": "নতুন পরিষেবা উপলব্ধ",
+  "Personal Information We Collect": "Personal Information We Collect",
+  "Our salon app Razor Cut is owned and operated by us. We are committed to protecting the privacy of our users .This Privacy Policy outlines how we collect, use, and protect your personal information when you use the App.": "আমাদের সেলুন অ্যাপ Razor Cut আমাদের দ্বারা মালিকানাধীন এবং চালান করা হয়। আমরা আমাদের ব্যবহারকারীদের গোপনীয়তা রক্ষা করতে প্রতিশ্রুতিবদ্ধ। এই গোপনীয়তা নীতি বর্ণনা করে যে ভাবে আমরা আপনার ব্যক্তিগত তথ্য সংগ্রহ করি, ব্যবহার করি এবং সুরক্ষা করি যখন আপনি অ্যাপটি ব্যবহার করেন।"
 };
 export { en, sp, bn };
